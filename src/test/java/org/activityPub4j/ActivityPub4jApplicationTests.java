@@ -1,4 +1,4 @@
-package org.bumblr;
+package org.activityPub4j;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BumblrApplicationTests {
+public class ActivityPub4jApplicationTests {
 
 	@Test
 	public void contextLoads() {
