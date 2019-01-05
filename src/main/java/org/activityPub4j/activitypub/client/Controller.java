@@ -1,4 +1,4 @@
-package org.bumblr.activitypub.client;
+package org.activityPub4j.activitypub.client;
 
 import java.io.IOException;
 

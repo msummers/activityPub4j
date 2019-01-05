@@ -177,8 +177,16 @@ public abstract class ObjectOrLink {
       return id;
    }
 
+   public String getMediaType() {
+      return mediaType;
+   }
+
    public String getName() {
       return name;
+   }
+
+   public Map<String, String> getNameMap() {
+      return nameMap;
    }
 
    public List<ObjectOrLink> getPreview() {
@@ -206,6 +214,14 @@ public abstract class ObjectOrLink {
       return this.isLink;
    }
 
+//   public void setType(String type) {
+//      try {
+//         this.type = new URI(type);
+//      } catch (URISyntaxException e) {
+//         log.error("setType: {}", e.getMessage());
+//      }
+//   }
+
    @JsonIgnore
    public void isLink(String href) {
       this.setHref(href);
@@ -218,14 +234,6 @@ public abstract class ObjectOrLink {
    public void set_Context(URI context) {
       this._context = context;
    }
-
-//   public void setType(String type) {
-//      try {
-//         this.type = new URI(type);
-//      } catch (URISyntaxException e) {
-//         log.error("setType: {}", e.getMessage());
-//      }
-//   }
 
    public void setHeight(Integer height) {
       this.height = height;
@@ -240,8 +248,16 @@ public abstract class ObjectOrLink {
       this.id = id;
    }
 
+   public void setMediaType(String mediaType) {
+      this.mediaType = mediaType;
+   }
+
    public void setName(String name) {
       this.name = name;
+   }
+
+   public void setNameMap(Map<String, String> nameMap) {
+      this.nameMap = nameMap;
    }
 
    public void setPreview(List<ObjectOrLink> preview) {
@@ -288,21 +304,5 @@ public abstract class ObjectOrLink {
          result.append("\n");
       }
       return result.toString();
-   }
-
-   public String getMediaType() {
-      return mediaType;
-   }
-
-   public void setMediaType(String mediaType) {
-      this.mediaType = mediaType;
-   }
-
-   public Map<String, String> getNameMap() {
-      return nameMap;
-   }
-
-   public void setNameMap(Map<String, String> nameMap) {
-      this.nameMap = nameMap;
    }
 }

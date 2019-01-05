@@ -6,8 +6,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.w3.activity.jackson.DeserProblemHandler;
-import org.w3.activity.jackson.ObjectOrLinkListSerializer;
-import org.w3.activity.jackson.ObjectOrLinkSerializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -2238,7 +2236,7 @@ public class JsonTests {
    }
 
    // Ignore. Another test with an implicit Object type that chokes because we _always_ return type on any object
-   // @Test
+   // 1G@Test
    public void example158() {
       String expected = "{ \"@context\": \"https://www.w3.org/ns/activitystreams\", \"name\": \"A thank-you note\", \"type\": \"Note\", \"content\": \"Thank you @sally for all your hard work! #givingthanks\", \"tag\": [ { \"type\": \"Mention\", \"href\": \"http://example.org/people/sally\", \"name\": \"@sally\" }, { \"id\": \"http://example.org/tags/givingthanks\", \"name\": \"#givingthanks\" } ] } ";
       ObjectOrLink thing;

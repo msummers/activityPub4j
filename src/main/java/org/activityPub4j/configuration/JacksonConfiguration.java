@@ -1,4 +1,4 @@
-package org.bumblr.configuration;
+package org.activityPub4j.configuration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

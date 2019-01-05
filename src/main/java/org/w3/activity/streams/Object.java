@@ -51,48 +51,60 @@ public class Object extends ObjectOrLink {
    // type is xsd:duration- Java type?
    private String duration;
 
+   private Endpoints endpoints;
    @JsonFormat (shape = JsonFormat.Shape.STRING,
          pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
    private Date endTime;
-   @JsonFormat (shape = JsonFormat.Shape.STRING,
-         pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
-   private Date updated;
-   @JsonFormat (shape = JsonFormat.Shape.STRING,
-         pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
-   private Date published;
-    @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+   @JsonSerialize (using = PropertySerializer.class)
+   private Link followers;
+   @JsonSerialize (using = PropertySerializer.class)
+   private Link following;
+
+   @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
    @JsonSerialize (using = PropertyListSerializer.class)
    private List<ObjectOrLink> generator;
-
    @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
    @JsonSerialize (using = PropertyListSerializer.class)
    private List<ObjectOrLink> icon;
-   // @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-   private URI id;
 
+   private URI id;
    @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
    @JsonSerialize (using = PropertyListSerializer.class)
    private List<ObjectOrLink> image;
+   @JsonSerialize (using = PropertySerializer.class)
+   private Link inbox;
    @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
    @JsonSerialize (using = PropertyListSerializer.class)
    private List<ObjectOrLink> inReplyTo;
-
+   @JsonSerialize (using = PropertySerializer.class)
+   private Link liked;
    @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
    @JsonSerialize (using = PropertyListSerializer.class)
    private List<Object> location;
 
+   @JsonSerialize (using = PropertySerializer.class)
+   private Link outbox;
+   private String preferredUsername;
+   @JsonFormat (shape = JsonFormat.Shape.STRING,
+         pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
+   private Date published;
+
    private Collection replies;
+   private Object source;
    // TODO ensure UTC
    @JsonFormat (shape = JsonFormat.Shape.STRING,
          pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
    private Date startTime;
-
+   private Collection streams;
    @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
    @JsonSerialize (using = PropertyListSerializer.class)
    private List<ObjectOrLink> tag;
    @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
    @JsonSerialize (using = PropertyListSerializer.class)
    private List<ObjectOrLink> to;
+   @JsonFormat (shape = JsonFormat.Shape.STRING,
+         pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
+   private Date updated;
    @JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
    @JsonSerialize (using = PropertyListSerializer.class)
    private List<Link> url;
@@ -155,8 +167,20 @@ public class Object extends ObjectOrLink {
       return duration;
    }
 
+   public Endpoints getEndpoints() {
+      return endpoints;
+   }
+
    public Date getEndTime() {
       return endTime;
+   }
+
+   public Link getFollowers() {
+      return followers;
+   }
+
+   public Link getFollowing() {
+      return following;
    }
 
    public List<ObjectOrLink> getGenerator() {
@@ -175,20 +199,48 @@ public class Object extends ObjectOrLink {
       return image;
    }
 
+   public Link getInbox() {
+      return inbox;
+   }
+
    public List<ObjectOrLink> getInReplyTo() {
       return inReplyTo;
+   }
+
+   public Link getLiked() {
+      return liked;
    }
 
    public List<Object> getLocation() {
       return location;
    }
 
+   public Link getOutbox() {
+      return outbox;
+   }
+
+   public String getPreferredUsername() {
+      return preferredUsername;
+   }
+
+   public Date getPublished() {
+      return published;
+   }
+
    public Collection getReplies() {
       return replies;
    }
 
+   public Object getSource() {
+      return source;
+   }
+
    public Date getStartTime() {
       return startTime;
+   }
+
+   public Collection getStreams() {
+      return streams;
    }
 
    public List<ObjectOrLink> getTag() {
@@ -197,6 +249,10 @@ public class Object extends ObjectOrLink {
 
    public List<ObjectOrLink> getTo() {
       return to;
+   }
+
+   public Date getUpdated() {
+      return updated;
    }
 
    public List<Link> getUrl() {
@@ -243,8 +299,20 @@ public class Object extends ObjectOrLink {
       this.duration = duration;
    }
 
+   public void setEndpoints(Endpoints endpoints) {
+      this.endpoints = endpoints;
+   }
+
    public void setEndTime(Date endTime) {
       this.endTime = endTime;
+   }
+
+   public void setFollowers(Link followers) {
+      this.followers = followers;
+   }
+
+   public void setFollowing(Link following) {
+      this.following = following;
    }
 
    public void setGenerator(List<ObjectOrLink> generator) {
@@ -263,20 +331,48 @@ public class Object extends ObjectOrLink {
       this.image = image;
    }
 
+   public void setInbox(Link inbox) {
+      this.inbox = inbox;
+   }
+
    public void setInReplyTo(List<ObjectOrLink> inReplyTo) {
       this.inReplyTo = inReplyTo;
+   }
+
+   public void setLiked(Link liked) {
+      this.liked = liked;
    }
 
    public void setLocation(List<Object> location) {
       this.location = location;
    }
 
+   public void setOutbox(Link outbox) {
+      this.outbox = outbox;
+   }
+
+   public void setPreferredUsername(String preferredUsername) {
+      this.preferredUsername = preferredUsername;
+   }
+
+   public void setPublished(Date published) {
+      this.published = published;
+   }
+
    public void setReplies(Collection replies) {
       this.replies = replies;
    }
 
+   public void setSource(Object source) {
+      this.source = source;
+   }
+
    public void setStartTime(Date startTime) {
       this.startTime = startTime;
+   }
+
+   public void setStreams(Collection streams) {
+      this.streams = streams;
    }
 
    public void setTag(List<ObjectOrLink> tag) {
@@ -287,24 +383,12 @@ public class Object extends ObjectOrLink {
       this.to = to;
    }
 
-   public void setUrl(List<Link> url) {
-      this.url = url;
-   }
-
-   public Date getPublished() {
-      return published;
-   }
-
-   public void setPublished(Date published) {
-      this.published = published;
-   }
-
-   public Date getUpdated() {
-      return updated;
-   }
-
    public void setUpdated(Date updated) {
       this.updated = updated;
+   }
+
+   public void setUrl(List<Link> url) {
+      this.url = url;
    }
 
 }
